@@ -43,7 +43,7 @@ spring:
       # update : 변경된 스키마를 적용한다
       # none : 아무것도 실행하지 않는다 (대부분의 DB에서 기본값이다)
       # validate : 변경된 스키마가 있다면 변경점을 출력하고 애플리케이션을 종료한다
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
         show_sql: true # 하이버네이트가 실행한 모든 SQL문을 콘솔로 출력
