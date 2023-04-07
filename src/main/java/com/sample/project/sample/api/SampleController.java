@@ -1,8 +1,9 @@
 package com.sample.project.sample.api;
 
-import com.sample.project.sample.application.SampleService;
 import com.sample.project.sample.api.dto.SampleRequest.Create;
-import java.net.URI;
+import com.sample.project.sample.api.dto.SampleRequest.Modify;
+import com.sample.project.sample.api.dto.SampleResponse;
+import com.sample.project.sample.application.SampleService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  * <h1> 샘플용 코드 </h1>
+ *
  * @author seunghoona
  */
 @RestController("/api/samples")
@@ -33,12 +35,12 @@ public class SampleController {
 
 	@PostMapping("/{id}")
 	public ResponseEntity<List<String>> createSample(
-		@PathVariable String id,
+		@PathVariable Long id,
 		@RequestBody Create request) {
 
-		sampleService.create(request);
+		sampleService.saveSample(request);
 
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+		final var location = ServletUriComponentsBuilder.fromCurrentRequest()
 			.path("/{id}")
 			.buildAndExpand(id)
 			.toUri();
@@ -47,12 +49,16 @@ public class SampleController {
 	}
 
 	@PatchMapping
-	public ResponseEntity<List<String>> editingSample() {
-		return ResponseEntity.ok(List.of("1", "2"));
+	public ResponseEntity<SampleResponse> editingSample(
+		@PathVariable Long id,
+		@RequestBody Modify request) {
+
+		final var sampleResponse = sampleService.modifySample(id, request);
+		return ResponseEntity.ok(sampleResponse);
 	}
 
 	@DeleteMapping
-	public ResponseEntity<List<String>> removeSample() {
+	public ResponseEntity<Void> removeSample() {
 		return ResponseEntity.noContent().build();
 	}
 

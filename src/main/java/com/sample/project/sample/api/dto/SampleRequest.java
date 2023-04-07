@@ -17,7 +17,7 @@ public class SampleRequest {
 	}
 
 	@Data
-	public static class Update {
+	public static class Modify {
 
 		private String name;
 		private int age;
