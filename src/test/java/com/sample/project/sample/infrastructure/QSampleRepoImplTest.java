@@ -57,6 +57,7 @@ class QSampleRepoImplTest {
 
 		// then
 		assertThat(sample.size()).isEqualTo(2);
+
 	}
 
 	@Test
