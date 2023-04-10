@@ -65,6 +65,8 @@ dependencies {
     implementation "com.google.code.gson:gson:${gsonVersion}"
 
     // 테스트 부분
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation "org.springframework.security:spring-security-test"
 
