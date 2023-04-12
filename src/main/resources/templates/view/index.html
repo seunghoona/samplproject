@@ -5,20 +5,13 @@
 <body>
 <div id="container">
     <script type="module">
-        import { sample } from './sample.js'
+        import { header } from './sample.js';
+        import { sampleService } from './sampleService.js';
+        import { DocumentUtils } from './DocumentUtils.js';
 
-        let html = [sample.getHeader({"class" : "hello", "title" : "안녕하세요"}),
-            sample.getHeader({"class" : "hello", "title" : "안녕하세요"}),
-            sample.getHeader({"class" : "hello", "title" : "안녕하세요"}),
-            sample.getHeader({"class" : "hello", "title" : "안녕하세요"}),
-            sample.getHeader({"class" : "hello", "title" : "안녕하세요"}),
-            sample.getHeader({"class" : "hello", "title" : "안녕하세요"})]
-
-
-        document.querySelector("#container").insertAdjacentHTML("afterend", html);
-
+        const samples = await sampleService.getSample();
+        DocumentUtils.afterend("#container", samples.map(sample => header.getHeader(sample)))
     </script>
 </div>
 </body>
 </html>
-
