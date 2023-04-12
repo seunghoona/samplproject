@@ -1,0 +1,24 @@
+<!doctype html>
+<head>
+
+</head>
+<body>
+<div id="container">
+    <script type="module">
+        import { sample } from './sample.js'
+
+        let html = [sample.getHeader({"class" : "hello", "title" : "안녕하세요"}),
+            sample.getHeader({"class" : "hello", "title" : "안녕하세요"}),
+            sample.getHeader({"class" : "hello", "title" : "안녕하세요"}),
+            sample.getHeader({"class" : "hello", "title" : "안녕하세요"}),
+            sample.getHeader({"class" : "hello", "title" : "안녕하세요"}),
+            sample.getHeader({"class" : "hello", "title" : "안녕하세요"})]
+
+
+        document.querySelector("#container").insertAdjacentHTML("afterend", html);
+
+    </script>
+</div>
+</body>
+</html>
+
